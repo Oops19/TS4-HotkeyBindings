@@ -1,0 +1,50 @@
+{
+	'o19.move': {
+		# WASD ==> IJKL; QE ==> TG
+		# Movement steps:
+		# Shift+Alt == 1 tile / 1m
+		# Alt == 25 cm
+		# Shift == 5 cm
+		# Ctrl == 1 cm
+		# Shift+Ctrl == 2 mm
+
+		'Shift+M': ['hk_move.translate_keys.TranslateKeys.toggle_move_mode', 'Toggle Absolute/Camera Movement Mode', False, ],
+		'Shift+B': ['hk_move.translate_keys.TranslateKeys.toggle_move_rotate', 'Toggle Move/Rotate', False, ],
+
+		'Shift+I': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0 0 -0.05', 'Move/Rotate Away (5 cm; 4.5°)', False, ],
+		'Shift+K': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0 0 0.05', 'Move/Rotate Closer', False, ],
+		'Shift+J': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move -0.05 0 0', 'Move/Rotate Left', False, ],
+		'Shift+L': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0.05 0 0', 'Move/Rotate Right', False, ],
+		'Shift+T': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0 0.05 0', 'Move/Rotate Up', False, ],
+		'Shift+G': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0 -0.05 0', 'Move/Rotate Down', False, ],
+
+		'Ctrl+I': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0 0 -0.01', 'Move/Rotate Away (1 cm; 0.9°)', False, ],
+		'Ctrl+K': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0 0 0.01', 'Move/Rotate Closer', False, ],
+		'Ctrl+J': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move -0.01 0 0', 'Move/Rotate Left', False, ],
+		'Ctrl+L': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0.01 0 0', 'Move/Rotate Right', False, ],
+		'Ctrl+T': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0 0.01 0', 'Move/Rotate Up', False, ],
+		'Ctrl+G': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0 -0.01 0', 'Move/Rotate Down', False, ],
+
+		'Shift+Ctrl+I': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0 0 -0.002', 'Move/Rotate Away (2 mm; 0.18°)', False, ],
+		'Shift+Ctrl+K': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0 0 0.002', 'Move/Rotate Closer', False, ],
+		'Shift+Ctrl+J': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move -0.002 0 0', 'Move/Rotate Left', False, ],
+		'Shift+Ctrl+L': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0.002 0 0', 'Move/Rotate Right', False, ],
+		'Shift+Ctrl+T': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0 0.002 0', 'Move/Rotate Up', False, ],
+		'Ctrl+Ctrl+G': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0 -0.002 0', 'Move/Rotate Down', False, ],
+
+		'Ctrl+Alt+I': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0 0 -1', 'Move/Rotate Away (1 tile / 1 m / 100 cm; 90°)', False, ],
+		'Ctrl+Alt+K': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0 0 1', 'Move/Rotate Closer', False, ],
+		'Ctrl+Alt+J': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move -1 0 0', 'Move/Rotate Left', False, ],
+		'Ctrl+Alt+L': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 1 0 0', 'Move/Rotate Right', False, ],
+		'Ctrl+Alt+T': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0 1 0', 'Move/Rotate Up', False, ],
+		'Ctrl+Alt+G': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0 -1 0', 'Move/Rotate Down', False, ],
+
+		'Alt+I': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0 0 -0.25', 'Move/Rotate Away (0.25 m / 25 cm; 22.5°)', False, ],
+		'Alt+K': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0 0 0.25', 'Move/Rotate Closer', False, ],
+		'Alt+J': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move -0.25 0 0', 'Move/Rotate Left', False, ],
+		'Alt+L': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0.25 0 0', 'Move/Rotate Right', False, ],
+		'Alt+T': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0 0.25 0', 'Move/Rotate Up', False, ],
+		'Alt+G': ['hk_move.translate_keys.TranslateKeys.move_rot_sim move 0 -0.25 0', 'Move/Rotate Down', False, ],
+
+	},
+}

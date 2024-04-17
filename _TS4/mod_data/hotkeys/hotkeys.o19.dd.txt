@@ -1,0 +1,11 @@
+# My first configuration file. If you don't like my hotkey definitions create your own hotkeys.zzz.txt file to remove them.
+{
+	'o19.dd': {
+		'Shift+N': ['hk_dd.register_keys.RegisterKeys.dd_next_pose', 'Progress to next pose/animation for active sim if available or another random pose/animation.', ],
+		'Shift+O': ['hk_dd.register_keys.RegisterKeys.dd_happy_active_sim', 'Active sim gets very happy (within the currently played pose/animation).', ],
+		'Ctrl+O': ['hk_dd.register_keys.RegisterKeys.dd_happy_other_sims', 'All other 1-n sims  gets very happy (within the currently played pose/animation).'],
+		'Shift+Ctrl+O': ['hk_dd.register_keys.RegisterKeys.dd_orgasm_all_sims', 'Make all sims in currently played pose/animation happy.', ],
+		'Ctrl+H': ['hk_dd.register_keys.RegisterKeys.dd_swap_spots', 'Active sim swaps its spot randomly in current pose/animation.', ],
+		'Shift+Ctrl+H': ['hk_dd.register_keys.RegisterKeys.dd_swap_poses', 'Active sim swaps its spot randomly with a sim playing a different pose/animation.', ],
+	},
+}

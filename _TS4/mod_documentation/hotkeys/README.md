@@ -1,5 +1,35 @@
-# TS4 Hotkey Bindings
-The bindings mod defines method and hotkeys to be used with the 'TS4 Hotkeys & Gamepad' mod.
+# TS4 Hotkeys & Gamepad
+
+This mod is for Windows only and does not work on any other systems.
+
+## Hotkeys
+This mod allows to define custom hotkeys for the keyboard keys [A-Z0-9].
+It supports Shift, Ctrl, Alt and/or Win key modifiers.
+The mod itself doesn't come with any pre-defined hotkey definitions.
+
+## Gamepad
+The mod supports using the gamepad to move sims around.
+The support to route sims to a location is very basic and may throw exceptions.
+Custom actions can't be bound to the gamepad keys, except of the paddle key which always act as normal keys. 
+* The left stick can be used to rotate the sim.
+* The left shoulder key activates the trigger keys to rotate the sim around the Y axis.
+* The right stick can be used to move the sim.
+* The right shoulder key activates the trigger keys to move the sim up/down (Y axis).
+* The DPAD can be used to send the sim into the corresponding location. This may fail and/or throw exceptions. Please do not report any exceptions thrown while using the DPAD.
+* The ABXY, menu and play keys are not yet used.
+* The game key can't be used.
+
+### Cheats
+* o19.hk.gp.id ID - Select the controller ID (0-3) to be used. Defaults to the fist controller '0'.
+* o19.hk.gp.verbose - Write a verbose log. This will cause some lag while using the controller.
+
+### Moving Objects
+There is a simple cheat interaction called 'Move'. Running it on the floor allows to move the `active` sim (default).
+Clicking on a object/(not controlled) sim allows to move and/or rotate the object/sim.
+
+
+# TS4 Hotkey Addon
+This addon defines methods and hotkeys to be used with the 'TS4 Hotkeys & Gamepad' mod.
 
 ### Move and Rotate
 Instead of 'WASD'/'QE' the 'IJKL'/'TG' keys will be used to move or rotate a sim.
