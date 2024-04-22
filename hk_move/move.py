@@ -61,9 +61,9 @@ class Move(metaclass=Singleton):
         @param camera_or_world: bool = True - Move the item along axis relative to the camera (x=right; z=to camera); False - Move the item along the world axis; Only valid for 'relocate_type_move=False'
         @param convert_deg_to_rad: bool = False - Angles in rad; False - Angles in deg; Only valid for 'relocate_type_move=False'
         @param item: [SimInfo, GameObject] - The object or sim to move. If it is None the stored value will be used if available. Otherwise the active sim will be used.
-        @param x: float = 0.0 - The x offset or angle
-        @param y: float = 0.0 - The y offset or angle
-        @param z: float = 0.0 - The z offset or angle
+        @param x: float = 0.0 - The x offset or x/pitch angle
+        @param y: float = 0.0 - The y offset or y/yaw angle
+        @param z: float = 0.0 - The z offset or z(roll angle
         """
         if item is None:
             if self.item:
@@ -95,9 +95,9 @@ class Move(metaclass=Singleton):
             Assign absolute angle values to create a quaternion.
             Avoid 'un-expected' rotation issues depending on the current pitch/roll/yaw values and/or gimbal lock
             '''
-            pitch = -x  # in rad or ° (deg)
-            roll = -z
-            yaw = -y
+            roll = y  # in ° (deg)
+            pitch = z
+            yaw = x
             relative_euler_angle = StdEulerAngle(roll, pitch, yaw, convert_deg_to_rad=convert_deg_to_rad)
             relative_q: StdQuaternion = relative_euler_angle.quaternion()
             q = q * relative_q
@@ -111,7 +111,7 @@ class Move(metaclass=Singleton):
                 x = position.x + x
                 y = position.y + y
                 z = position.z + z
-                position = sims4.math.Vector3(x, y, z)
+                position = Vector3(x, y, z)
             else:
                 # Move item along camera axis, x=right, z=to viewer
                 cam_angle = self._get_angle_to_camera(item)
@@ -123,7 +123,7 @@ class Move(metaclass=Singleton):
                 x = position.x + x2
                 y = position.y + y2
                 z = position.z + z2
-                position = sims4.math.Vector3(x, y, z)
+                position = Vector3(x, y, z)
 
         if self._trace_log:
             v = StdVector3(position.x, position.y, position.z)

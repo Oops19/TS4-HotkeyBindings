@@ -219,3 +219,5 @@ class TranslateKeys(metaclass=Singleton):
         if self._log_movement:
             log.debug(f"𝛼={angle} 📷={camera_position}, 🤰={sim_position}")
         return angle
+
+

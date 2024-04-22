@@ -24,8 +24,8 @@ from sims4.math import Vector3, Quaternion, Transform, Location
 class ParentIt:
 
     @staticmethod
-    @CommonConsoleCommand(ModInfo.get_identity(), 'o19.sim.p', 'ddd')
-    def parent_sim_to_object(output: CommonConsoleCommandOutput):
+    @CommonConsoleCommand(ModInfo.get_identity(), 'o19.hk_move.sim.sim.p', 'Parent sim to selected object.')
+    def o19_cheat_parent_sim_to_object(output: CommonConsoleCommandOutput):
         sim: Sim = CommonSimUtils.get_active_sim()
         obj = Move.item
 
@@ -44,8 +44,8 @@ class ParentIt:
         output(f"OK")
 
     @staticmethod
-    @CommonConsoleCommand(ModInfo.get_identity(), 'o19.sim.up', 'ddd')
-    def unparent_sim_to_object(output: CommonConsoleCommandOutput):
+    @CommonConsoleCommand(ModInfo.get_identity(), 'o19.hk_move.sim.up', 'Unparent sim from object')
+    def o19_cheat_unparent_sim_to_object(output: CommonConsoleCommandOutput):
         sim: Sim = CommonSimUtils.get_active_sim()
         obj = Move.item
 
@@ -55,16 +55,3 @@ class ParentIt:
 
         sim.remove_reference_from_parent()
         output(f"OK")
-
-
-r'''
-def remove_reference_from_parent(self):
-    parent = self.parent
-    if parent is not None:
-        parent._remove_child(self, new_parent=UNSET)
-        
-
-if parent_id is None:
-    parent_object = child_object.get_parenting_root()
-    child_object.clear_parent(child_object.transform, parent_object.routing_surface)
-'''

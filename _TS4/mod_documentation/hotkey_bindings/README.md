@@ -1,10 +1,18 @@
 # TS4 Hotkey Bindings
 The bindings mod defines method and hotkeys to be used with the 'TS4 Hotkeys & Gamepad' mod.
 
+## Issues
+There are some issues to detect the focus properly. In such cases the keys will not work. Switch to a different task and back to TS$ to fix this.
+
+The cheat console and input in CAS will lag. That's because the input can't be processed fast enough.
+
+The gamepad is queried in an active thread 30 times a second. This adds some overhead to TS4. Unplug or disable the gamepad to avoid this in case you don't use it.
+
+## Functionality
 ### Move and Rotate
 Instead of 'WASD'/'QE' the 'IJKL'/'TG' keys will be used to move or rotate a sim.
 
-One tile matches around 1 meter and there are modifiers to use smaller steps.
+One tile matches around 1 meter and there are modifier keys to use various steps.
 * Shift+Alt+_ .... 1 m / 1 tile | 90°
 * Alt+_ .......... 25 cm | 22.5°
 * Shift+_ ........ 5 cm  | 4.5°
@@ -16,6 +24,13 @@ One tile matches around 1 meter and there are modifiers to use smaller steps.
 * Shift+M - Toggle Movement Mode: Absolute (world axis) or Camera (I=away, K=closer, J=left, L=right); T/G (up/down) always use the world axis. 
 * Shift+B - Toggle Usage: Move or Rotate
 
+#### Save
+* Shift+Ctrl+S - Call the pose/animation player to save the current sim position.  
+
+Please note: For poses/animations sims are usually teleported to the object center.
+This is their location in-game, no matter where they are displayed while the pose is playing.
+Thus, the center of the object it used to determine the camera axis and not the visible sim position on the screen. 
+
 ### Speed / Experimental / Useless
 The game speed can be set, no matter whether TS4 wants to block it. Results may vary.
 * Shift+Ctrl+Alt+P - Pause the game
@@ -25,12 +40,12 @@ The game speed can be set, no matter whether TS4 wants to block it. Results may 
 
 ### Saving
 * Ctrl+S - Save the game in a timely manner.
-This save method is many times faster than the UI save.
-In case the game has issues with loading 'Alpha-CC' and the rending of sims/hair/outfits takes ages it may help to use this method.
-The ID is incremented every 4 hours.
+This save method is many times faster than the UI save button. Saving takes a few seconds and runs in background. Wait 5 seconds before exiting the game, after the 'save' notification has been displayed.
+In case the game has issues with loading 'Alpha-CC' and the rending of thumbnails of sims/hair/outfits takes ages it helps a lot to use this method.
+The ID is incremented every 4 hours. This will increase the needed disc space and/or allow to load also really old save files.
 
 ### Exiting
-* Shift+Ctrl+Alt+X - Exit the game in a timely manner. Nothing will be saved.
+* Shift+Ctrl+Alt+X - Exit the game in a timely manner. Nothing will be saved. A currently running save will be interrupted, so use it with care.
 
 ### Outfit options
 Outfit options are fully supported using 3rd party mods which support outfit modifiers. For vanilla TS4 some options are not available and dressing the sim is usually not possible. One CAS part after the other is either hidden or replaced by the bathing outfit. The order in which the CAS parts are either hidden or replaced is pre-defined and can not be modified.
@@ -45,19 +60,22 @@ Outfit options are fully supported using 3rd party mods which support outfit mod
 * Shift+Ctrl+Alt+C - Create a thread dump of all running TS4 treads.
 
 ## Pose and Animation interactions
-Support for some 
+There is support for some special interactions, this might or might not be supported by the used pose/animation player.
 
-##### Ignore this section for now
-To prepare a 4x4 keymap with (free) TS4 and Windows (often using the Win key) shortcuts.
-```code
-|#            | Shift              | Win               | Win+Shift              |
-+-------------+--------------------+-------------------+------------------------+
-|[#]          | [Shift+#]          | [Win+#]           | [Win+Shift+#]          |
-|[Ctrl+#]     | [Shift+Ctrl+#]     | [Win+Ctrl+#]      | [Win+Shift+Ctrl+#]     |
-|[Alt+#]      | [Shift+Alt+#]      | [Win+Alt+#]       | [Win+Shift+Alt+#]      |
-|[Ctrl+Alt+#] | [Shift+Ctrl+Alt+#] | [Win+Ctrl+Alt+#]  | [Win+Shift+Ctrl+Alt+#] |
-+-------------+--------------------+-------------------+------------------------+
-```
+* Shift+N - Play next pose/animation
+* Shift+O - Active sim gets very happy (within the currently played pose/animation).
+* Ctrl+O - All other 1-n sims  gets very happy (within the currently played pose/animation).
+* Shift+Ctrl+O - Make all sims in currently played pose/animation happy.
+* Ctrl+H - Active sim swaps its spot randomly in current pose/animation.
+* Shift+Ctrl+H - A random sim swaps its spot randomly in current pose/animation. Best to be used with 3+ sim poses.
+* Win+Ctrl+H - Experimental²: Active sim swaps its spot randomly with a sim playing a different pose/animation.²
+* Win+Shift+Ctrl+H - Experimental²: A random sim swaps its spot randomly with a sim playing a different pose/animation.²
+* Shift+Ctrl+S - Shift+Ctrl+S - Call the pose/animation player to save the current sim position.  This makes only sense if the sim has been moved before using the 'Move' options.
+
+Experimental² means experimental. Don't use this hotkey.
+If errors are thrown after using it simply ignore them.
+Do not report them.
+
 
 # Addendum
 
@@ -66,10 +84,11 @@ This mod has been tested with `The Sims 4` 1.106.148, S4CL 3.3, TS4Lib 0.2.0 (20
 It is expected to be compatible with many upcoming releases of TS4, S4CL and TS4Lib.
 
 ## Dependencies
-* [The Sims 4](https://www.ea.com/games/the-sims/the-sims-4)
-* [This Mod](./releases/latest)
+Download the ZIP file, not the sources.
+* [This Mod](../../releases/latest)
 * [TS4-Library](https://github.com/Oops19/TS4-Library/releases/latest)
 * [S4CL](https://github.com/ColonolNutty/Sims4CommunityLibrary/releases/latest)
+* [The Sims 4](https://www.ea.com/games/the-sims/the-sims-4)
 
 If not installed download and install TS4 and these mods.
 All are available for free.
