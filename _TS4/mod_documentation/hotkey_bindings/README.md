@@ -49,11 +49,11 @@ The ID is incremented every 4 hours. This will increase the needed disc space an
 
 ### Outfit options
 Outfit options are fully supported using 3rd party mods which support outfit modifiers. For vanilla TS4 some options are not available and dressing the sim is usually not possible. One CAS part after the other is either hidden or replaced by the bathing outfit. The order in which the CAS parts are either hidden or replaced is pre-defined and can not be modified.
+* H - Toggle heels / shoes. ('H' as 'S' is already used by TS4)
 * Q - Undress the active sim.
 * Shift+Q - Dress the active sim (Undo Q).
 * Ctrl+Q - Undress all other sims in the social group.
 * Shift+Ctrl+Q - Undress all sims in the social group, including the active sim.
-* Shift+H - Toggle heels / shoes. ('H' as 'S' is already used by TS4)
 * Shift+U - Undress all members during club gathering.
 
 ### Debug
@@ -66,10 +66,10 @@ There is support for some special interactions, this might or might not be suppo
 * Shift+O - Active sim gets very happy (within the currently played pose/animation).
 * Ctrl+O - All other 1-n sims  gets very happy (within the currently played pose/animation).
 * Shift+Ctrl+O - Make all sims in currently played pose/animation happy.
-* Ctrl+H - Active sim swaps its spot randomly in current pose/animation.
-* Shift+Ctrl+H - A random sim swaps its spot randomly in current pose/animation. Best to be used with 3+ sim poses.
-* Win+Ctrl+H - Experimental²: Active sim swaps its spot randomly with a sim playing a different pose/animation.²
-* Win+Shift+Ctrl+H - Experimental²: A random sim swaps its spot randomly with a sim playing a different pose/animation.²
+* Shift+H - Active sim swaps its spot randomly in current pose/animation.
+* Ctrl+H - A random sim swaps its spot randomly in current pose/animation. Best to be used with 3+ sim poses.
+* Win+Shift+H - Experimental²: Active sim swaps its spot randomly with a sim playing a different pose/animation.²
+* Win+Ctrl+H - Experimental²: A random sim swaps its spot randomly with a sim playing a different pose/animation.²
 * Shift+Ctrl+S - Shift+Ctrl+S - Call the pose/animation player to save the current sim position.  This makes only sense if the sim has been moved before using the 'Move' options.
 
 Experimental² means experimental. Don't use this hotkey.

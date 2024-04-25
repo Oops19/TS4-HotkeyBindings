@@ -6,11 +6,11 @@
 		'Ctrl+O': ['hk_dd.register_keys.RegisterKeys.dd_happy_other_sims', 'All other 1-n sims  gets very happy (within the currently played pose/animation).'],
 		'Shift+Ctrl+O': ['hk_dd.register_keys.RegisterKeys.dd_orgasm_all_sims', 'Make all sims in currently played pose/animation happy.', ],
 
-		'Ctrl+H': ['hk_dd.register_keys.RegisterKeys.dd_swap_spots', 'Active sim swaps its spot randomly in current pose/animation.', ],
-		'Shift+Ctrl+H': ['hk_dd.register_keys.RegisterKeys.dd_swap_other_spots', 'A random sim swaps its spot randomly in current pose/animation. Best to be used with 3+ sim poses.', ],
+		'Shift+H': ['hk_dd.register_keys.RegisterKeys.dd_swap_spots', 'Active sim swaps its spot randomly in current pose/animation.', ],
+		'Ctrl+H': ['hk_dd.register_keys.RegisterKeys.dd_swap_other_spots', 'A random sim swaps its spot randomly in current pose/animation. Best to be used with 3+ sim poses.', ],
 
-		# 'Win+Ctrl+H': ['hk_dd.register_keys.RegisterKeys.dd_swap_poses', 'Experimental: Active sim swaps its spot randomly with a sim playing a different pose/animation.', ],
-		# 'Win+Shift+Ctrl+H': ['hk_dd.register_keys.RegisterKeys.dd_swap_other_poses', 'Experimental: A random sim swaps its spot randomly with a sim playing a different pose/animation.', ],
+		# 'Win+Shift+H': ['hk_dd.register_keys.RegisterKeys.dd_swap_poses', 'Experimental: Active sim swaps its spot randomly with a sim playing a different pose/animation.', ],
+		# 'Win+Ctrl+H': ['hk_dd.register_keys.RegisterKeys.dd_swap_other_poses', 'Experimental: A random sim swaps its spot randomly with a sim playing a different pose/animation.', ],
 
 		'Shift+Ctrl+S': ['hk_dd.register_keys.RegisterKeys.dd_save_actor_position', 'Save location of active sim to DD customization file.', ],
 	},

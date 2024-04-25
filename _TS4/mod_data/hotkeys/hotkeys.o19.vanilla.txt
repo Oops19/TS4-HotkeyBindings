@@ -1,19 +1,15 @@
 {
 	'o19.vanilla': {
+		'H': ['hk_outfits.heels.Heels.toggle', 'Toggle heels / shoes.', ],  # 'S'hoes is used by TS4
 		'Q': ['hk_outfits.undress.Undress.undress_me', 'Undress the active sim', ],
 		'Shift+Q': ['hk_outfits.dress.Dress.dress_me', 'Dress the active sim', ],
 		'Ctrl+Q': ['hk_outfits.undress.Undress.undress_social_group', 'Undress all other sims in the social group.', ],
 		'Shift+Ctrl+Q': ['hk_outfits.undress.Undress.undress_all', 'Undress all sims in the social group, including the active sim.', ],
 
-		'Shift+H': ['hk_outfits.heels.Heels.toggle', 'Toggle heels / shoes.', ],  # 'S'hoes is used by TS4
 		'Shift+U': ['hk_outfits.undress.Undress.undress_club', 'Undress all members during club gathering.', ],
 
 		'Shift+Ctrl+Alt+C': ['hk_game.thread_dump.ThreadDump.create', 'Create a thread dump.', False, ],
-
-		# 'Shift+Alt+C': ['hk_game.cas.CAS.edit_in_cas', 'Edit sim in CAS', ],
-		# 'Shift+Ctrl+Alt+X': ['EXIT', 'Exit game in a timely manner.', False, ],
-		# 'Shift+Ctrl+Alt+X': ['hk_game.vanilla.Vanilla.quick_exit', 'Exit game in a timely manner.', False, ],
-		# 'Ctrl+S': ['hk_game.vanilla.Vanilla.quick_save', 'Save the game.', False, ],  # This collides with the vanilla Ctrl+S. Undo the vanilla action with Ctrl+W
+        # 'Shift+Alt+C': ['hk_game.cas.CAS.edit_in_cas', 'Edit sim in CAS', ],
 
 		'Shift+Ctrl+Alt+X': ['hk_game.vanilla.Vanilla.quickie exit', 'Exit game in a timely manner.', False, ],
 		# '*+S' This collides with the vanilla Ctrl+S. Undo the vanilla action with '*'+W'
