@@ -1,13 +1,6 @@
 # TS4 Hotkey Bindings
 The bindings mod defines method and hotkeys to be used with the 'TS4 Hotkeys & Gamepad' mod.
 
-## Issues
-There are some issues to detect the focus properly. In such cases the keys will not work. Switch to a different task and back to TS$ to fix this.
-
-The cheat console and input in CAS will lag. That's because the input can't be processed fast enough.
-
-The gamepad is queried in an active thread 30 times a second. This adds some overhead to TS4. Unplug or disable the gamepad to avoid this in case you don't use it.
-
 ## Functionality
 ### Move and Rotate
 Instead of 'WASD'/'QE' the 'IJKL'/'TG' keys will be used to move or rotate a sim.
@@ -48,7 +41,7 @@ The ID is incremented every 4 hours. This will increase the needed disc space an
 * Shift+Ctrl+Alt+X - Exit the game in a timely manner. Nothing will be saved. A currently running save will be interrupted, so use it with care.
 
 ### Outfit options
-Outfit options are fully supported using 3rd party mods which support outfit modifiers. For vanilla TS4 some options are not available and dressing the sim is usually not possible. One CAS part after the other is either hidden or replaced by the bathing outfit. The order in which the CAS parts are either hidden or replaced is pre-defined and can not be modified.
+Outfit options are fully supported using 3rd party mods which support outfit modifiers. For vanilla TS4 some options are not available and dressing the sim is usually not possible. One CAS part after the other is either hidden or replaced by the bathing outfit. The order is pre-defined and can not be modified.
 * H - Toggle heels / shoes. ('H' as 'S' is already used by TS4)
 * Q - Undress the active sim.
 * Shift+Q - Dress the active sim (Undo Q).
@@ -68,11 +61,11 @@ There is support for some special interactions, this might or might not be suppo
 * Shift+Ctrl+O - Make all sims in currently played pose/animation happy.
 * Shift+H - Active sim swaps its spot randomly in current pose/animation.
 * Ctrl+H - A random sim swaps its spot randomly in current pose/animation. Best to be used with 3+ sim poses.
-* Win+Shift+H - Experimental²: Active sim swaps its spot randomly with a sim playing a different pose/animation.²
-* Win+Ctrl+H - Experimental²: A random sim swaps its spot randomly with a sim playing a different pose/animation.²
+~~* Win+Shift+H - Experimental²: Active sim swaps its spot randomly with a sim playing a different pose/animation.~~
+~~* Win+Ctrl+H - Experimental²: A random sim swaps its spot randomly with a sim playing a different pose/animation.~~
 * Shift+Ctrl+S - Shift+Ctrl+S - Call the pose/animation player to save the current sim position.  This makes only sense if the sim has been moved before using the 'Move' options.
 
-Experimental² means experimental. Don't use this hotkey.
+Experimental² means experimental. Don't enable or use these hotkeys.
 If errors are thrown after using it simply ignore them.
 Do not report them.
 
