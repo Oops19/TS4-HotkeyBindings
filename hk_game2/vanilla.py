@@ -8,7 +8,7 @@
 import time
 
 import services
-from hk_game.speed import Speed
+from hk_game2.speed import Speed
 from ts4lib.ts4l_ctypes import windll
 from services.persistence_service import SaveGameData
 from sims4communitylib.utils.save_load.common_save_utils import CommonSaveUtils

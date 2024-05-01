@@ -10,7 +10,7 @@ from typing import Union
 import camera
 import services
 import sims4
-from hk_move.move import Move
+from hk_move2.move import Move
 
 from objects.game_object import GameObject
 

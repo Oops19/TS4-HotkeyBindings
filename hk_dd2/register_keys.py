@@ -39,15 +39,15 @@ class RegisterKeys:
             from deviantcore.animation_system.utils.animation_runner_utils import DCAnimationRunnerUtils
 
             sim_info_swap = CommonSimUtils.get_active_sim_info()
-            sex_instance = DCAnimationRunnerUtils().get_animation_runner(sim_info_swap)
-            if sex_instance is None:
+            dc_animation_runner = DCAnimationRunnerUtils().get_animation_runner(sim_info_swap)
+            if dc_animation_runner is None:
                 for sim_info_swap in CommonSimUtils.get_sim_info_for_all_sims_generator():
-                    sex_instance = DCAnimationRunnerUtils().get_animation_runner(sim_info_swap)
-                    if sex_instance:
+                    dc_animation_runner = DCAnimationRunnerUtils().get_animation_runner(sim_info_swap)
+                    if dc_animation_runner:
                         break
-            if sex_instance:
+            if dc_animation_runner:
                 log.debug(f'Progressing animation for sim {sim_info_swap}.')
-                sex_instance.advance_animation(is_manual_change=True)
+                dc_animation_runner.advance_animation(is_manual_change=True)
             else:
                 log.debug(f"No running animations found.")
         except Exception as e:
@@ -115,9 +115,9 @@ class RegisterKeys:
         RegisterKeys._dd_swap_spots(current_animation=False, current_actor=False)
 
     @staticmethod
-    def _get_animation_active_sim_v1(sex_instance: DCAnimationRunner, current_actor: bool = True) -> Tuple[SimInfo, Union[DCAnimationActorContext, None]]:
+    def _get_animation_active_sim_v1(dc_animation_runner: DCAnimationRunner, current_actor: bool = True) -> Tuple[SimInfo, Union[DCAnimationActorContext, None]]:
         sim_info_swap = CommonSimUtils.get_active_sim_info()
-        actor_contexts: List[DCAnimationActorContext] = list(sex_instance.context.animation_context.actor_contexts)
+        actor_contexts: List[DCAnimationActorContext] = list(dc_animation_runner.context.animation_context.actor_contexts)
         random.shuffle(actor_contexts)
         if current_actor:
             for actor_context in actor_contexts:
@@ -133,20 +133,26 @@ class RegisterKeys:
     @staticmethod
     def _get_animation_active_sim(dc_animation_runner: DCAnimationRunner, current_actor: bool = True) -> Tuple[int, SimInfo, Union[DCAnimationActorContext, None]]:
         sim_info = CommonSimUtils.get_active_sim_info()
-        actor_contexts_library_swap_pair: Dict[int, DCAnimationActorContext] = dc_animation_runner.context.animation_context.actor_contexts_library
-        actor_ids = list(actor_contexts_library_swap_pair.keys())
-        random.shuffle(actor_ids)
-        if current_actor:
+        actor_contexts: Dict[int, DCAnimationActorContext] = dc_animation_runner.context.animation_context.actor_contexts_library
+        actor_ids = list(actor_contexts.keys())
+        log.debug(f"Sim_info {sim_info} current_actor {current_actor} ... actor_contexts {actor_contexts}")
+        if current_actor is True:
             for actor_id in actor_ids:
-                actor_context = actor_contexts_library_swap_pair.get(actor_id)
+                actor_context = actor_contexts.get(actor_id)
+                log.debug(f"CA Sim_info {actor_id} {actor_context.assigned_context.sim_info}")
                 if sim_info == actor_context.assigned_context.sim_info:
+                    log.debug(f"==> CA Sim_info {actor_id} {actor_context.assigned_context.sim_info}")
                     return actor_id, sim_info, actor_context
         else:
+            random.shuffle(actor_ids)
             for actor_id in actor_ids:
-                actor_context = actor_contexts_library_swap_pair.get(actor_id)
+                actor_context = actor_contexts.get(actor_id)
+                log.debug(f"RND Sim_info {actor_id} {actor_context.assigned_context.sim_info}")
                 if sim_info != actor_context.assigned_context.sim_info:
+                    log.debug(f"==> RND Sim_info {actor_id} {actor_context.assigned_context.sim_info}")
                     return actor_id, sim_info, actor_context
 
+        log.debug(f"==> ---")
         return -1, sim_info, None
 
     @staticmethod
@@ -156,26 +162,25 @@ class RegisterKeys:
         animation_utils = DCAnimationRunnerUtils()
         swap_utils = DDSwapUtils()
 
-        sim_info_swap = CommonSimUtils.get_active_sim_info()
-        sex_instance = animation_utils.get_animation_runner(sim_info_swap)
-        if sex_instance is None:
-            return
-        if sex_instance.context.is_solo:
+        dc_animation_runner = animation_utils.get_animation_runner(CommonSimUtils.get_active_sim_info())
+        if dc_animation_runner is None or dc_animation_runner.context.is_solo:
             return
 
         if current_actor is False:
-            actor_id_exclude, sim_info_exclude, actor_context_exclude = RegisterKeys()._get_animation_active_sim(sex_instance, current_actor=True)
+            actor_id_exclude, sim_info_exclude, actor_context_exclude = RegisterKeys()._get_animation_active_sim(dc_animation_runner, current_actor=True)
         else:
             actor_id_exclude, sim_info_exclude, actor_context_exclude = -1, None, None
-        actor_id_swap, sim_info_swap, actor_context_swap = RegisterKeys()._get_animation_active_sim(sex_instance, current_actor)
-        actor_contexts_library_swap: Dict[int, DCAnimationActorContext] = sex_instance.context.animation_context.actor_contexts_library
+
+        actor_id_swap, sim_info_swap, actor_context_swap = RegisterKeys()._get_animation_active_sim(dc_animation_runner, current_actor)
+        actor_contexts_library_swap: Dict[int, DCAnimationActorContext] = dc_animation_runner.context.animation_context.actor_contexts_library
         if not actor_context_swap:
             return
         sexual_organs_swap_sim = list(getattr(actor_context_swap, 'sexual_organs', tuple()))
+        # sexual_organs_swap_sim = [so.value for so in getattr(actor_context_swap, 'sexual_organs', tuple())]
         sexual_organs_swap_sim.sort()
 
         if current_animation:
-            if sex_instance.context.is_duo:
+            if dc_animation_runner.context.is_duo:
                 log.debug(f"DUO")
                 swap_utils.swap_spots(sim_info_swap)
                 return
@@ -184,19 +189,20 @@ class RegisterKeys:
             log.debug(f"Sim to swap {sim_info_swap} [{CommonSpeciesUtils.get_species(sim_info_swap)} {sexual_organs_swap_sim}], 3+")
             # Figure out a spot to use
             actor_context_fallback: Union[DCAnimationActorContext, None] = None
-            actor_contexts: List[DCAnimationActorContext] = list(sex_instance.context.animation_context.actor_contexts)
+            actor_contexts: List[DCAnimationActorContext] = list(dc_animation_runner.context.animation_context.actor_contexts)
             random.shuffle(actor_contexts)
             for actor_context in actor_contexts:
                 if (actor_context == actor_context_swap) or (actor_context == actor_context_exclude):
                     continue
                 sim_info_swap_pair = actor_context.assigned_context.sim_info
                 sexual_organs_swap_pair = list(getattr(actor_context, 'sexual_organs', tuple()))
+                # sexual_organs_swap_pair = [so.value for so in getattr(actor_context, 'sexual_organs', tuple())]
                 sexual_organs_swap_pair.sort()
                 log.debug(f"Checking {sim_info_swap_pair} [{CommonSpeciesUtils.get_species(sim_info_swap_pair)} {sexual_organs_swap_pair}]")
                 if CommonSpeciesUtils.are_same_species(sim_info_swap, sim_info_swap_pair):
                     if sexual_organs_swap_sim == sexual_organs_swap_pair:
                         log.debug(f"Swapping {sim_info_swap} <--> {sim_info_swap_pair}")
-                        swap_utils._swap_sims(sex_instance, actor_context_swap, actor_context)
+                        swap_utils._swap_sims(dc_animation_runner, actor_context_swap, actor_context)
                         return
                     else:
                         log.debug(f"Fallback {sim_info_swap_pair}")
@@ -206,7 +212,7 @@ class RegisterKeys:
 
             if actor_context_fallback:
                 log.debug(f"Swapping {sim_info_swap} <--> {actor_context_fallback.assigned_context.sim_info} (fallback)")
-                swap_utils._swap_sims(sex_instance, actor_context_swap, actor_context_fallback)
+                swap_utils._swap_sims(dc_animation_runner, actor_context_swap, actor_context_fallback)
                 return
         else:
             try:
@@ -218,10 +224,10 @@ class RegisterKeys:
                     return
                 main_animation_runner = 0
                 i = -1
-                for _, dc_animation_runner in animation_runners.items():
+                for _, dc_animation_runner_2 in animation_runners.items():
                     i += 1
-                    dc_animation_runner: DCAnimationRunner = dc_animation_runner
-                    sim_contexts: List[CommonRunnableSimContextType] = dc_animation_runner.sim_contexts
+                    dc_animation_runner_2: DCAnimationRunner = dc_animation_runner_2
+                    sim_contexts: List[CommonRunnableSimContextType] = dc_animation_runner_2.sim_contexts
                     for sim_context in sim_contexts:
                         if sim_context.sim_info == sim_info_swap:
                             main_animation_runner = i
@@ -231,18 +237,19 @@ class RegisterKeys:
                 log.debug(f"Sim to swap {sim_info_swap} [{CommonSpeciesUtils.get_species(sim_info_swap)} {sexual_organs_swap_sim}], 3+")
                 actor_context_fallback: Union[DCAnimationActorContext, None] = None
                 i = -1
-                for _, dc_animation_runner in animation_runners.items():
+                for _, dc_animation_runner_2 in animation_runners.items():
                     i += 1
                     if i == main_animation_runner:
                         continue
                     log.debug(f"Processing animation: {i}")
-                    actor_contexts_library_swap_pair: Dict[int, DCAnimationActorContext] = dc_animation_runner.context.animation_context.actor_contexts_library
+                    actor_contexts_library_swap_pair: Dict[int, DCAnimationActorContext] = dc_animation_runner_2.context.animation_context.actor_contexts_library
                     actor_ids = list(actor_contexts_library_swap_pair.keys())
                     random.shuffle(actor_ids)
                     for actor_id_swap_pair in actor_ids:
                         actor_context_swap_pair = actor_contexts_library_swap_pair.get(actor_id_swap_pair)
                         sim_info_swap_pair = actor_context_swap_pair.assigned_context.sim_info
                         sexual_organs_swap_pair = list(getattr(actor_context_swap_pair, 'sexual_organs', tuple()))
+                        # sexual_organs_swap_pair = [so.value for so in getattr(actor_context_swap_pair, 'sexual_organs', tuple())]
                         sexual_organs_swap_pair.sort()
                         log.debug(f"Checking {sim_info_swap_pair} [{CommonSpeciesUtils.get_species(sim_info_swap_pair)} {sexual_organs_swap_pair}]")
                         if CommonSpeciesUtils.are_same_species(sim_info_swap, sim_info_swap_pair):
@@ -250,9 +257,9 @@ class RegisterKeys:
                                 log.debug(f"Swapping {sim_info_swap} <--> {sim_info_swap_pair}")
                                 actor_contexts_library_swap_pair.update({actor_id_swap_pair: actor_context_swap})
                                 actor_contexts_library_swap.update({actor_id_swap: actor_context_swap_pair})
-                                sex_instance.restart(DCAnimationRunnerStopReason.SIM_POSITION_SWAP)
-
                                 dc_animation_runner.restart(DCAnimationRunnerStopReason.SIM_POSITION_SWAP)
+
+                                dc_animation_runner_2.restart(DCAnimationRunnerStopReason.SIM_POSITION_SWAP)
                                 return
                             else:
                                 log.debug(f"Fallback {sim_info_swap_pair}")
@@ -265,8 +272,8 @@ class RegisterKeys:
                     log.debug(f"Swapping {sim_info_swap} <--> {sim_info_swap_pair}")
                     actor_contexts_library_swap_pair.update({actor_id_swap_pair: actor_context_swap})
                     actor_contexts_library_swap.update({actor_id_swap: actor_context_swap_pair})
-                    sex_instance.restart(DCAnimationRunnerStopReason.SIM_POSITION_SWAP)
                     dc_animation_runner.restart(DCAnimationRunnerStopReason.SIM_POSITION_SWAP)
+                    dc_animation_runner_2.restart(DCAnimationRunnerStopReason.SIM_POSITION_SWAP)
                     return
                 log.debug(f"Failed to locate a sim.")
             except Exception as e:

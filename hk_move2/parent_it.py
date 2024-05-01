@@ -6,7 +6,7 @@
 
 
 from hotkey_bindings.modinfo import ModInfo
-from hk_move.move import Move
+from hk_move2.move import Move
 
 from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand
 from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
