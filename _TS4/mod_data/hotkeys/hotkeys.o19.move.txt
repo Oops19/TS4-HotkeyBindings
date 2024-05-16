@@ -30,7 +30,7 @@
 		'Shift+Ctrl+J': ['hk_move2.translate_keys.TranslateKeys.move_rot_sim move -0.002 0 0', 'Move/Rotate Left', False, ],
 		'Shift+Ctrl+L': ['hk_move2.translate_keys.TranslateKeys.move_rot_sim move 0.002 0 0', 'Move/Rotate Right', False, ],
 		'Shift+Ctrl+T': ['hk_move2.translate_keys.TranslateKeys.move_rot_sim move 0 0.002 0', 'Move/Rotate Up', False, ],
-		'Ctrl+Ctrl+G': ['hk_move2.translate_keys.TranslateKeys.move_rot_sim move 0 -0.002 0', 'Move/Rotate Down', False, ],
+		'Shift+Ctrl+G': ['hk_move2.translate_keys.TranslateKeys.move_rot_sim move 0 -0.002 0', 'Move/Rotate Down', False, ],
 
 		'Ctrl+Alt+I': ['hk_move2.translate_keys.TranslateKeys.move_rot_sim move 0 0 -1', 'Move/Rotate Away (1 tile / 1 m / 100 cm; 90°)', False, ],
 		'Ctrl+Alt+K': ['hk_move2.translate_keys.TranslateKeys.move_rot_sim move 0 0 1', 'Move/Rotate Closer', False, ],

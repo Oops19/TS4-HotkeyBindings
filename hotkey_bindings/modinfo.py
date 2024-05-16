@@ -28,10 +28,12 @@ class ModInfo(CommonModInfo):
 
     @property
     def _version(self) -> str:
-        return '0.1.3'
+        return '0.1.4'
 
 
 '''
+v0.1.4
+    Fixed 'Shift+Ctrl+G' ('Ctrl+Ctrl+G')
 v0.1.3
     Rename hk_* to hk_*2 to avoid collision with previous versions.
 v0.1.2
