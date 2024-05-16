@@ -28,10 +28,12 @@ class ModInfo(CommonModInfo):
 
     @property
     def _version(self) -> str:
-        return '0.1.4'
+        return '0.1.5'
 
 
 '''
+v0.1.5
+    Catch errors in case imports are missing
 v0.1.4
     Fixed 'Shift+Ctrl+G' ('Ctrl+Ctrl+G')
 v0.1.3

@@ -17,7 +17,7 @@ from hotkey_bindings.modinfo import ModInfo
 from sims4communitylib.utils.common_log_registry import CommonLog, CommonLogRegistry
 from ts4lib.utils.simple_ui_notification import SimpleUINotification
 
-log: CommonLog = CommonLogRegistry.get().register_log(ModInfo.get_identity().base_namespace, ModInfo.get_identity().name)
+log: CommonLog = CommonLogRegistry.get().register_log(ModInfo.get_identity(), ModInfo.get_identity().name)
 log.enable()
 log.debug(f"vanilla ...")
 
