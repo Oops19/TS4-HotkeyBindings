@@ -63,7 +63,7 @@ There is support for some special interactions, this might or might not be suppo
 * Ctrl+H - A random sim swaps its spot randomly in current pose/animation. Best to be used with 3+ sim poses.
 * ~~Win+Shift+H - Experimental²: Active sim swaps its spot randomly with a sim playing a different pose/animation.~~
 * ~~Win+Ctrl+H - Experimental²: A random sim swaps its spot randomly with a sim playing a different pose/animation.~~
-* Shift+Ctrl+S - Shift+Ctrl+S - Call the pose/animation player to save the current sim position.  This makes only sense if the sim has been moved before using the 'Move' options.
+* Shift+Ctrl+S - Call the pose/animation player to save the current sim position.  This makes only sense if the sim has been moved before using the 'Move' options.
 
 Experimental² means experimental. Don't enable or use these hotkeys.
 If errors are thrown after using it simply ignore them.
