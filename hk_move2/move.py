@@ -22,7 +22,7 @@ from sims4.math import Vector3, Quaternion, Transform, Location
 import services
 
 from hotkey_bindings.modinfo import ModInfo
-from sims4communitylib.utils.common_log_registry import CommonLogRegistry, CommonLog
+from sims4communitylib.utils.common_log_registry import CommonLog, CommonLogRegistry
 from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 from ts4lib.classes.coordinates.std_euler_angle import StdEulerAngle
 from ts4lib.classes.coordinates.std_quaternion import StdQuaternion

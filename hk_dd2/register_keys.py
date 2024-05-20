@@ -21,7 +21,7 @@ try:
     from hotkey_bindings.modinfo import ModInfo
     from sims.sim_info import SimInfo
     from sims4communitylib.classes.runnables.common_runnable_with_sims import CommonRunnableSimContextType
-    from sims4communitylib.utils.common_log_registry import CommonLogRegistry, CommonLog
+    from sims4communitylib.utils.common_log_registry import CommonLog, CommonLogRegistry
     from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
     # noinspection PyUnresolvedReferences
     from sims4.math import Vector3, Quaternion, Transform, Location

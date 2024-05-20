@@ -22,7 +22,7 @@ from sims4.math import Vector3, Quaternion, Transform, Location
 from hotkey_bindings.modinfo import ModInfo
 from sims4communitylib.classes.math.common_vector3 import CommonVector3
 from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
-from sims4communitylib.utils.common_log_registry import CommonLogRegistry, CommonLog
+from sims4communitylib.utils.common_log_registry import CommonLog, CommonLogRegistry
 from sims4communitylib.utils.misc.common_camera_utils import CommonCameraUtils
 from sims4communitylib.utils.sims.common_sim_interaction_utils import CommonSimInteractionUtils
 from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils

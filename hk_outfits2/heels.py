@@ -20,7 +20,7 @@ except:
     pass
 
 from hotkey_bindings.modinfo import ModInfo
-from sims4communitylib.utils.common_log_registry import CommonLogRegistry, CommonLog
+from sims4communitylib.utils.common_log_registry import CommonLog, CommonLogRegistry
 
 log: CommonLog = CommonLogRegistry.get().register_log(ModInfo.get_identity(), 'Heels')
 log.enable()
