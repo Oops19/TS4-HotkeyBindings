@@ -9,7 +9,6 @@ from typing import Union, Any, Tuple
 
 import camera
 import routing
-import sims4
 
 from interactions.utils import routing
 from objects.game_object import GameObject
@@ -55,6 +54,22 @@ class Move(metaclass=Singleton):
     def item(self, obj: Union[SimInfo, GameObject, None]):
         self._item = obj
 
+    def _game_object_location(self, _object) -> Tuple[Vector3, Quaternion, int, int, int]:
+        try:
+            position: Vector3 = _object._location.transform.translation
+            orientation: Quaternion = _object._location.transform.orientation
+            level: int = getattr(_object._location, 'level', 0)
+            # level = _object._location.routing_surface.secondary_id
+            routing_surface = getattr(_object, 'routing_surface', routing.SurfaceType.SURFACETYPE_WORLD)
+            if _object.parent:
+                parent_object_id = _object.parent.id
+            else:
+                parent_object_id = None
+            return position, orientation, level, routing_surface, parent_object_id
+        except Exception as e:
+            log.warn(f"Oops ({e}). Couldn't get generic position of '{_object}'")
+            return None, None, None, None, None
+
     def relocate(self, move_or_rotate: bool = True, camera_or_world: bool = True, convert_deg_to_rad: bool = False, item: Union[Sim, GameObject] = None, x: float = 0.0, y: float = 0.0, z: float = 0.0) -> Tuple[Vector3, Quaternion, Union[Sim, GameObject], Any]:
         """
         @param move_or_rotate: bool = True - Move the item; False - Rotate the item
@@ -63,7 +78,7 @@ class Move(metaclass=Singleton):
         @param item: [SimInfo, GameObject] - The object or sim to move. If it is None the stored value will be used if available. Otherwise the active sim will be used.
         @param x: float = 0.0 - The x offset or x/pitch angle
         @param y: float = 0.0 - The y offset or y/yaw angle
-        @param z: float = 0.0 - The z offset or z(roll angle
+        @param z: float = 0.0 - The z offset or z/roll angle
         """
         if item is None:
             if self.item:
@@ -73,15 +88,20 @@ class Move(metaclass=Singleton):
         if self._trace_log:
             log.debug(f"relocate(move={move_or_rotate}, camera={camera_or_world}, item={item}, x={x}, y={y} z={z})")
 
-        if isinstance(item, Sim):
-            (position, orientation, _level, _surface_id) = item.get_location_for_save()
-            _zone_id = services.current_zone_id()
-            routing_surface = routing.SurfaceIdentifier(_zone_id, _level, routing.SurfaceType.SURFACETYPE_WORLD)
-        else:
-            position = item.position
-            orientation = item.orientation
-            # _level = getattr(item, 'level', 0)
-            routing_surface = getattr(item, 'routing_surface', routing.SurfaceType.SURFACETYPE_WORLD)
+        position, orientation, level, routing_surface, parent_object_id = self._game_object_location(item)
+        if position is None:
+            try:
+                if isinstance(item, Sim):
+                    (position, orientation, level, _surface_id) = item.get_location_for_save()
+                    _zone_id = services.current_zone_id()
+                    routing_surface = routing.SurfaceIdentifier(_zone_id, level, routing.SurfaceType.SURFACETYPE_WORLD)
+                else:
+                    position = item.position
+                    orientation = item.orientation
+                    # _level = getattr(item, 'level', 0)
+                    routing_surface = getattr(item, 'routing_surface', routing.SurfaceType.SURFACETYPE_WORLD)
+            except Exception as e:
+                log.warn(f"Oops ({e}). Couldn't get position of '{item}'")
 
         q = StdQuaternion(orientation.w, orientation.x, orientation.y, orientation.z)
         if self._trace_log:
