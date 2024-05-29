@@ -4,7 +4,6 @@
 #
 
 
-
 try:
     import random
     from typing import Union, List, Dict, Tuple

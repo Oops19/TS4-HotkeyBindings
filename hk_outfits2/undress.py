@@ -52,6 +52,7 @@ class Undress(object, metaclass=Singleton):
             Undress.use_outfit_modifiers = False
 
         log.debug(f"Undress.use_outfit_modifiers = {Undress.use_outfit_modifiers}")
+
     @staticmethod
     def undress_me():
         sim_info = CommonSimUtils.get_active_sim_info()

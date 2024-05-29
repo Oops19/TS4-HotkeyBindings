@@ -28,10 +28,12 @@ class ModInfo(CommonModInfo):
 
     @property
     def _version(self) -> str:
-        return '0.1.6'
+        return '0.1.7'
 
 
 '''
+v0.1.7
+    Tested with TS4 v1.107
 v0.1.6
     Improved gathering of sim location, should no longer throw exceptions during some special cases
 v0.1.5

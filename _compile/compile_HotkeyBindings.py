@@ -193,7 +193,7 @@ for exclude_folder in exclude_folders:
 shutil.make_archive(os.path.join(release_directory, f"{zip_file_name}"), 'zip', mod_base_directory)
 print(f'Created {os.path.join(release_directory, f"{zip_file_name}.zip")}')
 
-'''
+r'''
 v2.0.18
     Check for __init__.py and its size.
 v2.0.17
