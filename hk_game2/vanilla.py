@@ -43,7 +43,7 @@ class Vanilla:
         # noinspection PyBroadException
         try:
             send_save_message = True
-            check_cooldown = False
+            check_cooldown = True  # False -> broken paintings/fotos
             t = int((86400 + time.time()) / 10_000)  # every 4 hours +1
             save_game_data = SaveGameData(CommonSaveUtils.get_save_slot_id(), 'quick', True, t)
             persistence_service = services.get_persistence_service()
