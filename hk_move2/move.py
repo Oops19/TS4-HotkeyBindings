@@ -8,7 +8,6 @@ import math
 from typing import Union, Any, Tuple
 
 import camera
-import routing
 
 from interactions.utils import routing
 from objects.game_object import GameObject
@@ -17,7 +16,7 @@ from sims.sim import Sim
 from sims.sim_info import SimInfo
 # noinspection PyUnresolvedReferences
 from sims4.math import Vector3, Quaternion, Transform, Location
-
+import routing
 import services
 
 from hotkey_bindings.modinfo import ModInfo
