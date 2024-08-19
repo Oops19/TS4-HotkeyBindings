@@ -50,7 +50,7 @@ Outfit options are fully supported using 3rd party mods which support outfit mod
 * Shift+U - Undress all members during club gathering.
 
 ### Debug
-* Shift+Ctrl+Alt+C - Create a thread dump of all running TS4 treads.
+* Shift+Ctrl+Alt+C - Create a thread dump of all running TS4 threads.
 
 ## Pose and Animation interactions
 There is support for some special interactions, this might or might not be supported by the used pose/animation player.
@@ -73,7 +73,7 @@ Do not report them.
 # Addendum
 
 ## Game compatibility
-This mod has been tested with `The Sims 4` 1.108.329, S4CL 3.6, TS4Lib 0.3.24 (2024-07-25).
+This mod has been tested with `The Sims 4` 1.108.349, S4CL 3.7, TS4Lib 0.3.24 (2024-07-25).
 It is expected to be compatible with many upcoming releases of TS4, S4CL and TS4Lib.
 
 ## Dependencies
