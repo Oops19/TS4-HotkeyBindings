@@ -9,7 +9,6 @@ import time
 
 import services
 from hk_game2.speed import Speed
-from ts4lib.ts4l_ctypes import windll
 from services.persistence_service import SaveGameData
 from sims4communitylib.utils.save_load.common_save_utils import CommonSaveUtils
 
@@ -28,6 +27,7 @@ class Vanilla:
     def quick_exit():
         # noinspection PyBroadException
         try:
+            from ts4lib.ts4l_ctypes import windll
             PROCESS_TERMINATE = 0x0001
             FALSE = 0
             dwProcessID = windll.kernel32.GetCurrentProcessId()

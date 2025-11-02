@@ -28,10 +28,12 @@ class ModInfo(CommonModInfo):
 
     @property
     def _version(self) -> str:
-        return '0.1.7'
+        return '0.1.8'
 
 
 '''
+v0.1.8
+    Move ctypes into try/except to exit game - will fail on Mac.
 v0.1.7
     Tested with TS4 v1.107
 v0.1.6
