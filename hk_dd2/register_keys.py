@@ -340,7 +340,7 @@ try:
             customized_animation.add_operation(operation_to_add)
             existing_operation = customized_animation.find_existing_operation(operation_to_add)
             if existing_operation is not None:
-                existing_operation.apply(animation)
+                existing_operation.apply_basic_buffs(animation)
             else:
                 operation_to_add.apply(animation)
             animation_data_store.set_animation(customized_animation, animation)
