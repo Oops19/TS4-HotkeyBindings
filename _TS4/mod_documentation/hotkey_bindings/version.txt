@@ -1,5 +1,5 @@
-HotkeyBindings v0.1.8 for The Sims 4 v1.119.109 and S4CL v3.15
-Created on 2025-11-09
+HotkeyBindings v0.1.8 for The Sims 4 v1.119.109 and S4CL v3.17
+Created on 2025-11-12
 v0.1.8
     Move ctypes into try/except to exit game - will fail on Mac.
 
