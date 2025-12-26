@@ -27,7 +27,7 @@ class Vanilla:
     def quick_exit():
         # noinspection PyBroadException
         try:
-            from ts4lib.ts4l_ctypes import windll
+            from ts4l_ctypes import windll
             PROCESS_TERMINATE = 0x0001
             FALSE = 0
             dwProcessID = windll.kernel32.GetCurrentProcessId()
@@ -43,7 +43,7 @@ class Vanilla:
         # noinspection PyBroadException
         try:
             send_save_message = True
-            check_cooldown = True  # False -> broken paintings/fotos
+            check_cooldown = True  # False -> broken paintings/photos
             t = int((86400 + time.time()) / 10_000)  # every 4 hours +1
             save_game_data = SaveGameData(CommonSaveUtils.get_save_slot_id(), 'quick', True, t)
             persistence_service = services.get_persistence_service()
